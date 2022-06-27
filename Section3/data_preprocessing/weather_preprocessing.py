@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import datetime
 
 WEATHER_DATA_PATH = os.path.join("./data/weather/")
 HUMIDITY_PATH = "humidity.csv"
@@ -37,6 +38,29 @@ weather['date'] = humidity['date']
 weather['temperature'] = temperature['temp']
 weather['humidity'] = humidity['humidity']
 weather['precipitation'] = rain['precipitation']
+
+def get_days(data):
+    
+    data['days'] = '평일'
+    
+    
+    
+    for i in range(len(data)):
+        date = data['date'][i].split('-')
+        date = list(map(int, date))
+        
+        days = datetime.date(date[0], date[1], date[2]).weekday()  
+    
+        if days >= 0  | days <=4:
+            data['days'][i] = '평일'
+        
+        elif days == 5:
+            data['days'][i] = '토요일'
+    
+        elif days == 6:
+            data['days'][i] = '일요일'
+
+get_days(weather)
 
 
 

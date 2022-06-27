@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <style>
+        body {background-color: lightblue;}
+        h3 {text-align: center;}
+  
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지하철 불쾌지수(첫차시간)</title>
+
+</head>
+<body>
+    <h3> 데이터 입력</h3>
+
+    <form action="{{url_for('first_result')}}"method="post">
+
+        <p>평일, 토요일, 일요일 중에 입력해주세요</p>
+             <input type="text" name = '요일'>
+
+        <p>아직은 2호선만 지원합니다!</p>
+            <input type="number" name = '호선'>
+
+        <p>역번호는 아래의 지도를 참고하세요</p>
+        <iframe src="https://www.google.com/maps/d/embed?mid=1AumQCLv42sTik5dVBnyAkFrrczlTvnga&ehbc=2E312F" width="640" height="480"></iframe>
+            <input type="number" name = '역번호'>
+        
+        <p>역이름을 입력해주세요</p>
+            <input type="text" name = '역이름'>
+
+        <p>내선, 외선</p>
+            <input type="text" name = '열차방향'>
+
+        <p>날씨 정보</p>
+            <iframe src="https://www.weather.go.kr/weather/special/api/iframe/dfs.jsp?myPointCode=5011061000&showVsrt=N&showSrt=Y&showMidterm=N"  width="640" height="480"></iframe>
+
+        <p>온도 입력</p>
+            <input type="number" name = '온도'>
+
+        <p>습도 입력</p>
+            <input type="number" name = '습도'>
+
+        <p>강수량 입력</p>
+            <input type="number" name = '강수량'>    
+            
+    <br>       
+        <button type="submit" class="btn">예측</button>
+    </form>
+
+    <br>
+    <br>
+    <p>혼잡도 예측 값</p>
+    {{congestion}}
+
+    <br>
+    <br>
+    <p>불쾌지수 예측 값</p>
+    <p>60이하의 값은 적절한 불쾌지수 입니다.</p>
+    <p>60~80은 다소 높은 불쾌지수 입니다.</p>
+    <p>100이 넘으면 아주 높은 불쾌지수 입니다.</p>
+    {{subway_discomfort_index}}
+    
+</body>
+</html>
