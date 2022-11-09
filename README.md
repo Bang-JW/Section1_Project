@@ -1,3 +1,5 @@
-# Section Project
+# Project 개요
 
-각 섹션 폴더에 들어가면 해당 섹션에서 진행한 프로젝트가 있습니다!
+- Section2 : 카드 거래 사기 탐지 모델  
+- Section3 : 지하철 불쾌지수
+- Section4 : 한국어 챗봇
